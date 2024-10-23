@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Drag & Drop</title>
+  <script src="jquery.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: .90em;
+    }
+
+    #show {
+      width: 400px;
+      height: 300px;
+      background-color: yellow;
+      text-align: center;
+      line-height: 300px;
+      /* Center content vertically */
+    }
+
+    #fileInfo {
+      text-align: left;
+    }
+  </style>
+  <style>
+    #div1 {
+      width: 200px;
+      height: 50px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #div2 {
+      width: 300px;
+      height: 200px;
+      background-color: peachpuff;
+      border: 2px dashed black;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="show" ondragenter="preventDefault(event)" ondragover="preventDefault(event)" ondrop="dropitem(event)">
+    <span>Drop a file here....</span>
+  </div>
+
+  <div id="fileInfo">
+    File Name: <span id="fName"></span><br>
+    File Size: <span id="fSize"></span> bytes<br>
+    File Type: <span id="fType"></span><br>
+
+    <script>
+      function preventDefault(e) {
+        e.preventDefault();
+      }
+
+      function dropitem(e) {
+        var f = e.dataTransfer.files[0];
+        document.getElementById('fName').innerText = f.name;
+        document.getElementById('fSize').innerText = f.size;
+        document.getElementById('fType').innerText = f.type;
+
+        preventDefault(e);
+      }
+    </script>
+
+
+
+  </div>
+  <div id="div1" draggable="true" ondragstart="dragStart(event)">Drag and Drop it into the Rectangle</div>
+  <div id="div2" ondrop="dropHandler(event)" ondragover="allowDrop(event)"></div>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    function dropHandler(ev) {
+      var d = ev.dataTransfer.getData("sourceID");
+      ev.target.appendChild(document.getElementById(d));
+    }
+
+    function dragStart(ev) {
+      console.log(ev);
+      ev.dataTransfer.setData("sourceID", ev.target.id);
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>

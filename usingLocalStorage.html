@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage</title>
+</head>
+
+<body>
+  <p>Step One: Enter your Name</p>
+  <input type="text" id="name" name="name">
+  <p>Step Two: Set your Name to Local Storage</p>
+  <input type="button" id="name" value="Set Name" onclick="setItem()">
+  <p> Step Three: Get your Name from Local Storage</p>
+  <p>Step 4: Close your Browser</p>
+  <p>Step 5: Try to get Previously saved data</p>
+  <input type="button" value="Get Name" onclick="getItem()">
+  <script>
+    function setItem() {
+      if (typeof Storage != "undefined") {
+        var name = document.getElementById("name").value;
+        localStorage.myName = name;
+      }
+    }
+
+    function getItem() {
+      if (typeof Storage !== "undefined") {
+        alert(localStorage.myName);
+      }
+    }
+  </script>
+</body>
+
+</html>

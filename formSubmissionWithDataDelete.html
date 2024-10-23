@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submit with Data Delete</title>
+</head>
+
+<body>
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById('myForm');
+      const tableBody = document.getElementById('tbody');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        if (name && email) {
+          addDataToTable(tableBody, name, email);
+          form.reset();
+          alert("Information Submitted");
+        }
+        else {
+          alert("Please fill in all fields");
+        }
+      });
+      tableBody.addEventListener('click', function (event) {
+        if (event.target && event.target.tagName === "BUTTON" && event.target.classList.contains("remove-button")) {
+          const row = event.target.closest("tr");
+          if (row) {
+            row.remove();
+          }
+        }
+      });
+    });
+    function addDataToTable(tableBody, name, email) {
+      const newRow = tableBody.insertRow();
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      cell1.textContent = name;
+      cell2.textContent = email;
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "Remove";
+      removeButton.classList.add("remove-button");
+      cell3.appendChild(removeButton);
+    }
+  </script>
+</body>
+
+</html>

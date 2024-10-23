@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes</title>
+</head>
+
+<body>
+  <div>
+    <h1>Module Test</h1>
+    <button id="convertButton">Do Sample Conversion</button>
+  </div>
+  <script type="module" src="classModule.js"></script>
+  <script src="classModule.js">
+    import { Units, LengthConverter } from '/classModule.js';
+    document.getElementById('convertButton').addEventListener('click', doSampleConversion);
+    function doSampleConversion() {
+      const lengthInMiles = 495;
+      const lengthInElephants = LengthConverter.Convert(lengthInMiles, Units.Miles, Units.Feet);
+      alert(lengthInElephants);
+    }
+
+    console.log('Organizing Your JavaScript Classes with Modules');
+    console.log('===================================================');
+  </script>
+</body>
+
+</html>

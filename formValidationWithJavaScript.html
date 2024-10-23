@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Form Validation</h2>
+  <form id="myForm" onsubmit="return validateForm()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <span id="usernameError" class="error"></span><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <span id="passwordError" class="error"></span><br><br>
+
+    <label for="text">Text:</label>
+    <input type="text" id="text" name="text">
+    <span id="textError" class="error"></span><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <span id="emailError" class="error"></span><br><br>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male"> Male
+    <input type="radio" id="female" name="gender" value="female"> Female
+    <span id="genderError" class="error"></span><br><br>
+
+    <label for="checkbox">Agree to Terms:</label>
+    <input type="checkbox" id="checkbox" name="checkbox">
+    <span id="checkboxError" class="error"></span><br><br>
+
+    <label for="dropdown">Select Option:</label>
+    <select id="dropdown" name="dropdown">
+      <option value="">Select</option>
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+    <span id="dropdownError" class="error"></span><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function validateForm() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var text = document.getElementById('text').value;
+      var email = document.getElementById('email').value;
+      var gender = document.querySelector('input[name="gender"]:checked');
+      var checkbox = document.getElementById('checkbox').checked;
+      var dropdown = document.getElementById('dropdown').value;
+
+      var usernameError = document.getElementById('usernameError');
+      var passwordError = document.getElementById('passwordError');
+      var textError = document.getElementById('textError');
+      var emailError = document.getElementById('emailError');
+      var genderError = document.getElementById('genderError');
+      var checkboxError = document.getElementById('checkboxError');
+      var dropdownError = document.getElementById('dropdownError');
+
+      // Reset error messages
+      usernameError.innerHTML = "";
+      passwordError.innerHTML = "";
+      textError.innerHTML = "";
+      emailError.innerHTML = "";
+      genderError.innerHTML = "";
+      checkboxError.innerHTML = "";
+      dropdownError.innerHTML = "";
+
+      // Validation
+      if (username === "") {
+        usernameError.innerHTML = "Username is required";
+        return false;
+      }
+
+      if (password === "") {
+        passwordError.innerHTML = "Password is required";
+        return false;
+      }
+
+      if (text === "") {
+        textError.innerHTML = "Text is required";
+        return false;
+      }
+
+      if (email === "") {
+        emailError.innerHTML = "Email is required";
+        return false;
+      }
+
+      if (!gender) {
+        genderError.innerHTML = "Gender is required";
+        return false;
+      }
+
+      if (!checkbox) {
+        checkboxError.innerHTML = "You must agree to terms";
+        return false;
+      }
+
+      if (dropdown === "") {
+        dropdownError.innerHTML = "Please select an option";
+        return false;
+      }
+
+      return true;
+    }
+
+  </script>
+</body>
+
+</html>

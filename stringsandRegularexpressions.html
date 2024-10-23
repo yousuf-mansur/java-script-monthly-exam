@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strings and Regular Expressions</title>
+</head>
+
+<body>
+  <script>
+    console.log("Checking for an Existing, Nonempty String");
+    console.log("==========================================")
+
+    const stra = 'Hello, world!';
+    if (stra && stra.trim() !== '') {
+      console.log('String exists and is not empty.');
+    } else {
+      console.log('String is empty or does not exist.');
+    }
+
+
+    // Converting a Numeric Value to a Formatted String
+    const number = 123456.789;
+    const formattedString = number.toLocaleString();
+    console.log('Formatted string:', formattedString);
+
+
+    //Inserting Special Characters
+
+    const specialCharacter = '\u00A9'; // Copyright symbol
+    console.log('Special character:', specialCharacter);
+
+
+    //Inserting Emojis
+    const emoji = '😊'; // Smiling face emoji
+    console.log('Emoji:', emoji);
+
+
+    //Using Template Literals for Clearer String Concatenation
+
+
+    const name = 'Sarkar';
+    const greeting = `Hello, ${name}!`;
+    console.log('Greeting:', greeting);
+
+    //Performing a Case - Insensitive String Comparison
+    const str1 = 'Hello';
+    const str2 = 'hello';
+    const areEqual = str1.toLowerCase() === str2.toLowerCase();
+    console.log('Strings are equal (case-insensitive):', areEqual);
+
+
+    //Checking If a String Contains a Specific Substring
+
+    const strs = 'Hello, world!';
+    const substring = 'world';
+    const containsSubstring = strs.includes(substring);
+    console.log('String contains substring:', containsSubstring);
+
+
+    //Replacing All Occurrences of a String
+
+    const strd = 'Hello, world!';
+    const replacedStrd = strd.replace(/Hello/g, 'Hi');
+    console.log('Replaced string:', replacedStrd);
+
+
+    //Replacing HTML Tags with Named Entities
+
+
+    const htmlString = '<p>Hello, <strong>world</strong>!</p>';
+    const replacedHTML = htmlString.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    console.log('Replaced HTML:', replacedHTML);
+
+
+    //Using a Regular Expression to Replace Patterns in a String
+
+    const strf = 'Hello, 123 world!';
+    const replacedStrf = strf.replace(/\d+/g, '456');
+    console.log('Replaced string:', replacedStrf);
+
+
+    //Extracting a List from a String
+
+
+
+    const strg = 'Apples, Oranges, Bananas';
+    const list = strg.split(', ');
+    console.log('Extracted list:', list);
+
+    //Finding All Instances of a Pattern
+
+    const strh = 'Hello, world! Hello, universe!';
+    const pattern = /Hello/g;
+    const matches = str.match(pattern);
+    console.log('Matches:', matches);
+
+
+    //Removing Whitespace from the Beginning and End of a String
+
+    const strj = '  Hello, world!  ';
+    const trimmedStr = strj.trim();
+    console.log('Trimmed string:', trimmedStrj);
+
+
+    //Converting the First Letter of a String to Uppercase
+
+    const strk = 'hello, world!';
+    const capitalizedStr = strk.charAt(0).toUpperCase() + strk.slice(1);
+    console.log('Capitalized string:', capitalizedStrk);
+
+    // Validating an Email Address
+
+    const email = 'test@example.com';
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    console.log('Is valid email:', isValid);
+  </script>
+</body>
+
+</html>

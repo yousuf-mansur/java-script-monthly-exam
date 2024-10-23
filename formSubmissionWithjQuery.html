@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <!-- Include jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Form Validation Example</h2>
+  <form id="myForm" action="#" method="post">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+      <span class="error" id="usernameError"></span>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <span class="error" id="emailError"></span>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <span class="error" id="passwordError"></span>
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+
+  <script>
+    $(document).ready(function () {
+      $('#myForm').submit(function (event) {
+
+        event.preventDefault();
+
+
+        $('.error').text('');
+
+
+        var username = $('#username').val();
+        if (username.length < 5) {
+          $('#usernameError').text('Username must be at least 5 characters');
+        }
+
+        var email = $('#email').val();
+        if (!isValidEmail(email)) {
+          $('#emailError').text('Invalid email format');
+        }
+
+        var password = $('#password').val();
+        if (password.length < 8) {
+          $('#passwordError').text('Password must be at least 8 characters');
+        }
+
+
+        if (username.length >= 5 && isValidEmail(email) && password.length >= 8) {
+          $('#myForm')[0].submit();
+        }
+      });
+
+
+      function isValidEmail(email) {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+    });
+  </script>
+</body>
+
+</html>

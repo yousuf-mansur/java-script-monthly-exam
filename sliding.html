@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide Up</title>
+  <!-- Include jQuery library -->
+  <script src="jquery.js"></script>
+  <style>
+    #slide1,
+    #slide2 {
+      display: none;
+      position: absolute;
+      background-color: black;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    #slide3 {
+      display: none;
+      position: relative;
+      background-color: yellow;
+      width: 30%;
+      height: 30%;
+      padding: 30px;
+      margin: 100px auto;
+    }
+
+    #message {
+      height: 70%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="slide1"></div>
+  <div id="slide2">
+    <div id="slide3">
+      <div id="message"></div>
+      <button id="ok">ok</button>
+    </div>
+  </div>
+  <button id="show" style="height: 60px;">Time show now</button>
+
+  <script>
+    $(document).ready(function () {
+      $("#show").click(function () {
+        $("#slide1").fadeTo(3000, 0.3).promise()
+          .then(function () {
+            $("#slide2").show();
+            $("#slide3").slideDown(1000);
+            $("#message").html("Time Now : " + getTime());
+          });
+      });
+      $("#ok").click(function () {
+        $("#slide3").slideUp(1000).promise()
+          .then(function () {
+            $("#slide2").hide();
+            $("#slide1").fadeOut(1000);
+          });
+      });
+    });
+
+    function getTime() {
+      var date = new Date();
+      return date.getHours() + ": " + date.getMinutes() + ":" + date.getSeconds();
+    }
+  </script>
+</body>
+
+</html>

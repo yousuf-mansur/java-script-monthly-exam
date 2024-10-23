@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numbers</title>
+</head>
+
+<body>
+  <script>
+    console.log("Generating Random Numbers");
+    console.log("=========================")
+
+    const randomNumber = Math.random();
+    console.log('Random number:', randomNumber);
+
+    console.log("Generating Cryptographically Secure Random Numbers");
+    console.log("=================================================")
+    const cryptoRandomNumber = window.crypto.getRandomValues(new Uint32Array(1))[0];
+    console.log('Cryptographically secure random number:', cryptoRandomNumber);
+
+    console.log("Rounding to a Specific Decimal Place");
+    console.log("===================================")
+
+
+    const numberToRound = 3.14159;
+    const roundedNumber = Math.round(numberToRound * 100) / 100;
+    console.log('Rounded number:', roundedNumber);
+
+    console.log("Preserving Accuracy in Decimal Values");
+    console.log("===================================")
+
+    const value = 0.1 + 0.2;
+    console.log('Preserved accuracy:', value);
+
+    console.log("Converting a String to a Number");
+    console.log("===================================")
+
+    const numericString = '42';
+    const number = parseInt(numericString);
+    console.log('Converted number:', number);
+
+    console.log("Converting a Decimal to a Hexadecimal Value");
+    console.log("===================================")
+
+    const decimalNumber = 255;
+    const hexadecimalNumber = decimalNumber.toString(16);
+    console.log('Hexadecimal value:', hexadecimalNumber);
+
+    console.log("Converting Between Degrees and Radians");
+    console.log("===================================");
+
+    const degrees = 90;
+    const radians = degrees * (Math.PI / 180);
+    console.log('Radians:', radians);
+
+    console.log("Calculating the Length of a Circular Arc");
+    console.log("===================================");
+
+    const radius = 5;
+    const angleInDegrees = 90;
+    const arcLength = (2 * Math.PI * radius * angleInDegrees) / 360;
+    console.log('Arc length:', arcLength);
+
+    console.log("Manipulating Very Large Numbers with BigInt");
+    console.log("===================================");
+
+    const largeNumber = 123456789012345678901234567890n;
+    console.log('Large number:', largeNumber);
+  </script>
+</body>
+
+</html>
